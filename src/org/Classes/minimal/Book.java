@@ -30,12 +30,12 @@ public class Book {
     @Override
     public String toString() {
         return "    Название книги: " + getName() +
-                "\n     Автор: " + getAuthor().toStringOneLine() +
+                "\n     Автор: " + getAuthor().toString() +
                 "\n     Год издания: " + getYear();
     }
 
     public String toStringOneLine() {
-        return getAuthor().toStringOneLine() + ": " +
+        return getAuthor().toString() + ": " +
                 getName() + ": " +  getYear();
     }
 }
