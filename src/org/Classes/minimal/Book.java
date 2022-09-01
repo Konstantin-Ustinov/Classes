@@ -1,5 +1,7 @@
 package org.Classes.minimal;
 
+import java.util.Objects;
+
 public class Book {
     private String name;
     private Author author;
@@ -30,12 +32,25 @@ public class Book {
     @Override
     public String toString() {
         return "    Название книги: " + getName() +
-                "\n     Автор: " + getAuthor().toStringOneLine() +
+                "\n     Автор: " + getAuthor().toString() +
                 "\n     Год издания: " + getYear();
     }
 
     public String toStringOneLine() {
-        return getAuthor().toStringOneLine() + ": " +
+        return getAuthor().toString() + ": " +
                 getName() + ": " +  getYear();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return year == book.year && name.equals(book.name) && author.equals(book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, author, year);
     }
 }
